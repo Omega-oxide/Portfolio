@@ -2,20 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('header-footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    document.getElementById('header').innerHTML = doc.querySelector('header').outerHTML;
+                    document.getElementById('footer').innerHTML = doc.querySelector('footer').outerHTML;
+                });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelector('.carousel-images');
+            const totalImages = images.children.length;
+            const imageWidth = document.querySelector('.carousel').offsetWidth; // Get the width of the carousel
+            let index = 0;
+
+            document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+                index = (index + 1) % totalImages;
+                images.style.transform = `translateX(-${index * imageWidth}px)`;
+            });
+
+            document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+                index = (index - 1 + totalImages) % totalImages;
+                images.style.transform = `translateX(-${index * imageWidth}px)`;
+            });
+        });
+    </script>
+
 </head>
 <body>
-<div id="header"></div>
-    <script>
-        fetch('header-footer.html')
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('header').innerHTML = data;
-               });
-    </script>
-<div>
-    <h2>Here we go</h2>
-</div>
+    <div id="header"></div>
+
+    <div class="carousel">
+        <div class="carousel-images">
+            <a href="textbook.html" target="_blank">
+                <img src="Images/Textbook_ad.png" alt="Image 1">
+            </a>
+            <a href="textbook.html" target="_blank">
+                <img src="Images/Textbook_ad.png" alt="Image 1">
+            </a>
+            <a href="textbook.html" target="_blank">
+                <img src="Images/Textbook_ad.png" alt="Image 1">
+            </a>
+        </div>
+        <button class="carousel-btn prev">❮</button>
+        <button class="carousel-btn next">❯</button>
+    </div>
+
+
+    <div class="container">
+        <h1>Welcome to the Portfolio</h1>
+        <p>
+            My name is Benjamin and I am a student at Frostburg State University<br>
+            I made this portfolio to showcase all of the work
+            I have done in Tech Writing this semester<br>
+            The subject I wrote about was Metal Gear Solid V: The Phantom Pain<br>
+
+
+        </p>
+    </div>
+
+    <div id="footer"></div>
 </body>
 </html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            fetch('header-footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(data, 'text/html');
+                    document.getElementById('header').innerHTML = doc.querySelector('header').outerHTML;
+                    document.getElementById('footer').innerHTML = doc.querySelector('footer').outerHTML;
+                });
+        });</script>
+    <script>document.addEventListener('DOMContentLoaded', () => {
+            const images = document.querySelector('.carousel-images');
+            const totalImages = images.children.length;
+            const imageWidth = document.querySelector('.carousel').offsetWidth; // Get the width of the carousel
+            let index = 0;
+
+            document.querySelector('.carousel-btn.next').addEventListener('click', () => {
+                index = (index + 1) % totalImages;
+                images.style.transform = `translateX(-${index * imageWidth}px)`;
+            });
+
+            document.querySelector('.carousel-btn.prev').addEventListener('click', () => {
+                index = (index - 1 + totalImages) % totalImages;
+                images.style.transform = `translateX(-${index * imageWidth}px)`;
+            });
+        });</script>
+
+</head>
+<body>
+    <div id="header"></div>
+    <div class="container">
+        <h1>Video Script/Demo</h1>
+        <p>
+            The final project was to create a video showing users how to operate a the given subject.
+            So my video is a demo of the game Metal Gear Solid V: The Phantom Pain.
+            First was the script for it and then the video itself. <br>
+            <h3>Script:</h3>
+            The script is a basic outline of what I wanted to show in the video.
+            A hypothetical ideal situation for each of my given ideas for
+            different aporaches to the mission. The final video is very different but the best
+            parts of the script are still in the video. <br>
+            <h3>Video:</h3>
+            The video shows the user how to sucessfully complete Mission 8 in the game.
+            It demos multiple game mechanics and how to use them to complete the mission.
+            This was the first time I have used video editing software and I learned a lot.
+            <br><br>
+            This video assignment's goal is to show how diverse the games mechanics
+            are and how to use them.
+            Each section tries to capitalize on a number of different mechanics.
+            It is a demo and guide to <a href="https://store.steampowered.com/app/287700/METAL_GEAR_SOLID_V_THE_PHANTOM_PAIN/">Metal Gear Solid V: The Phantom Pain</a>
+            since its launch back in 2015 on PS3, PS4, Xbox 360, Xbox One, and PC.
+            <br><br><br>
+            If you find any issues with the pdf for this file not loading please contact me <a href="mailto:bagreen0@frostburg.edu">bagreen0@frostburg.edu</a>,
+            until I can find a fix this is the link to view my <a href="Images/Video.pdf">Direction Set</a>.
+        </p>
+    </div>
+
+    <h2>Script:</h2>
+    <div class="pdf-loader">
+        <div class="loader-images">
+            <iframe src="Images/Video.pdf"></iframe>
+        </div>
+    </div>
+
+    <br><br>
+
+    <h2>Video:</h2>
+    <div class="video-loader">
+        <video controls width="100%" height="100%">
+            <source src="Images/Demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="container">
+        <p>
+            Here is the video in all its glory, if you wish to watch this on YouTube 
+            <a href="https://youtu.be/6V3zhFvxM9g?si=YUZ9GQHqcohdxwjB">click here</a>.
+        </p>
+    </div>
+
+
+    <div class="container">
+        <h2>Original Copy</h2>
+        <p>
+            This is the <a href="OVideo.pdf">original copy of my video script</a>.
+            Its here to show the difference between the original and the final copy.
+        </p>
+    </div>
+
+    <div id="footer"></div>
+</body>
+</html>
