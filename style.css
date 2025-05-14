@@ -178,22 +178,25 @@ p {
 }
 
 .video-loader {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
     max-width: 1000px;
     margin: 20px auto;
-    height: 60vh; /* Adjust as needed */
-    background: #f9f9f9;
     border: 2px solid #ccc;
     border-radius: 8px;
+    background: #000;
 }
 
-    .video-loader video {
+    .video-loader iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        border: none;
         border-radius: 8px;
-        background: #000;
     }
 
 /* Footer styles */
